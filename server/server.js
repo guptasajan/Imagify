@@ -15,7 +15,7 @@ await connectDB()
 
 app.use(express.json())
 app.use(cors())
-await connectDB()
+// await connectDB()
 
 app.use('/api/user', userRouter)
 app.use('/api/image', imageRouter)

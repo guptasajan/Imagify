@@ -48,6 +48,7 @@ const BuyCredit = () => {
         try {
             if (!user) {
                 setShowLogin(true)
+                return;
             }
 
             const { data } = await axios.post(backendUrl + '/api/user/pay-razor', { planId }, { headers: { token } })
@@ -85,8 +86,13 @@ const BuyCredit = () => {
                         <p className='mt-6'>
                             <span className='text-3xl font-medium'>${items.price} </span>/ {items.credits} credits
                         </p>
-                        <button onClick={() => paymentRazorpay(items.id)} className='w-full bg-gray-800 text-white mt-8
-                        text-sm rounded-md py-2.5 min-w-52'>{user ? 'Purchase' : 'Get Started'}</button>
+                        <button
+                            onClick={() => paymentRazorpay(items.id)}
+                            className='w-full bg-gray-800 text-white mt-8 text-sm rounded-md py-2.5 min-w-52 cursor-pointer'>
+                            {user ? 'Purchase' : 'Get Started'}
+                        </button>
+                        {/* <button onClick={() => paymentRazorpay(items.id)} className='w-full bg-gray-800 text-white mt-8
+                        text-sm rounded-md py-2.5 min-w-52'>{user ? 'Purchase' : 'Get Started'}</button> */}
                     </div>
 
                 ))}
